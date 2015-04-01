@@ -1,0 +1,15 @@
+node_modules/
+modules/
+.npm-debug.log
+.nuget/
+nuget/
+doc/
+examples/
+tests/
+.git*
+.jshint*
+.npmignore
+.travis.yml
+CHANGELOG.*
+Gruntfile.js
+travis.sh
