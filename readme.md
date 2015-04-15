@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-This project provides Reactive Extensions for JavaScript (RxJS) bindings for [Node.js](http://nodejs.org) and [io.js](https://iojs.org) to abstract over the `EventEmitter`, Streams and more.  
+This project provides Reactive Extensions for JavaScript (RxJS) bindings for [Node.js](http://nodejs.org) and [io.js](https://iojs.org) to abstract over the `EventEmitter`, Streams and more.
 
 ## GETTING STARTED
 
@@ -21,7 +21,7 @@ npm install rx-dom
 ```
 ##  API Documentation ##
 
-You can find the documentation [here](https://github.com/Reactive-Extensions/rx-node/tree/master/doc) as well as examples [here](https://github.com/Reactive-Extensions/rx-node/tree/master/examples).
+You can find the documentation [here](https://github.com/Reactive-Extensions/rx-node/tree/master/doc).
 
 ## Contributing ##
 
