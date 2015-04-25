@@ -10,7 +10,7 @@ There are a number of ways to get started with the RxJS bindings for Node.js and
 
 ### Download the Source
 
-To download the source of the HTML DOM Bindings for the Reactive Extensions for JavaScript, type in the following:
+To download the source of the Node.js Bindings for the Reactive Extensions for JavaScript, type in the following:
 ```bash
 git clone https://github.com/Reactive-Extensions/rx-node.git
 cd ./rxjs-node
