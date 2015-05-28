@@ -336,7 +336,7 @@ var subscription = RxNode.fromTransformStream(getTransformStreamSomehow());
 Writes an observable sequence to a stream.
 
 #### Arguments
-1. `observable` *(Obsesrvable)*: Observable sequence to write to a stream.
+1. `observable` *(Observable)*: Observable sequence to write to a stream.
 2. `stream` *(Stream)*: The stream to write to.
 3. `[encoding]` *(String)*: The encoding of the item to write.
 
