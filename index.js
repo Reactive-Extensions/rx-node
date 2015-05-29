@@ -123,7 +123,7 @@ module.exports = {
 
     stream.addListener('drain', onDrain);
 
-    return source.subscribe(
+    var disposable = source.subscribe(
       function (x) {
         !stream.write(String(x), encoding) && source.pause();
       },
@@ -137,5 +137,7 @@ module.exports = {
       });
 
     source.resume();
+
+    return disposable;
   }
 };
