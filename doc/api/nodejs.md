@@ -132,6 +132,8 @@ var subscription = source.subscribe(observer);
 ### <a id="rxnodefromeventeventemitter-eventname"></a>`RxNode.fromEvent(eventEmitter, eventName)`
 <a href="#rxnodefromeventeventemitter-eventname">#</a> [&#x24C8;](https://github.com/Reactive-Extensions/RxJS/blob/master/index.js#L48-L50 "View in source")
 
+**Deprecated in favor of `Rx.Observable.fromEvent` in rx.async.js.**
+
 Handles an event from the given EventEmitter as an observable sequence.
 
 #### Arguments
