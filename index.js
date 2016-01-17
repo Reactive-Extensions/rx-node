@@ -46,12 +46,14 @@ module.exports = {
    * Converts a flowing stream to an Observable sequence.
    * @param {Stream} stream A stream to convert to a observable sequence.
    * @param {String} [finishEventName] Event that notifies about closed stream. ("end" by default)
+   * @param {String} [dataEventName] Event that notifies about incoming data. ("data" by default)
    * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and finish events like `end` or `finish`.
    */
-  fromStream: function (stream, finishEventName) {
+  fromStream: function (stream, finishEventName, dataEventName) {
     stream.pause();
 
     finishEventName || (finishEventName = 'end');
+    dataEventName || (dataEventName = 'data');
 
     return Observable.create(function (observer) {
       function dataHandler (data) {
@@ -66,14 +68,14 @@ module.exports = {
         observer.onCompleted();
       }
 
-      stream.addListener('data', dataHandler);
+      stream.addListener(dataEventName, dataHandler);
       stream.addListener('error', errorHandler);
       stream.addListener(finishEventName, endHandler);
 
       stream.resume();
 
       return function () {
-        stream.removeListener('data', dataHandler);
+        stream.removeListener(dataEventName, dataHandler);
         stream.removeListener('error', errorHandler);
         stream.removeListener(finishEventName, endHandler);
       };
@@ -83,10 +85,11 @@ module.exports = {
   /**
    * Converts a flowing readable stream to an Observable sequence.
    * @param {Stream} stream A stream to convert to a observable sequence.
+   * @param {String} [dataEventName] Event that notifies about incoming data. ("data" by default)
    * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'end' events.
    */
-  fromReadableStream: function (stream) {
-    return this.fromStream(stream, 'end');
+  fromReadableStream: function (stream, dataEventName) {
+    return this.fromStream(stream, 'end', dataEventName);
   },
 
   /**
@@ -101,10 +104,11 @@ module.exports = {
   /**
    * Converts a flowing transform stream to an Observable sequence.
    * @param {Stream} stream A stream to convert to a observable sequence.
+   * @param {String} [dataEventName] Event that notifies about incoming data. ("data" by default)
    * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'finish' events.
    */
-  fromTransformStream: function (stream) {
-    return this.fromStream(stream, 'finish');
+  fromTransformStream: function (stream, dataEventName) {
+    return this.fromStream(stream, 'finish', dataEventName);
   },
 
   /**
