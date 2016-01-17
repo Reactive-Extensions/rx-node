@@ -223,7 +223,7 @@ emitter.publish();
 
 ### Stream Handlers ###
 
-### <a id="rxnodefromstreamstream-finisheventname"></a>`RxNode.fromStream(stream, finishEventName)`
+### <a id="rxnodefromstreamstream-finisheventname"></a>`RxNode.fromStream(stream, finishEventName, dataEventName)`
 <a href="#rxnodefromstreamstream-finisheventname">#</a> [&#x24C8;](https://github.com/Reactive-Extensions/RxJS/blob/master/index.js#L96-L124 "View in source")
 
 Converts a flowing stream to an Observable sequence.
@@ -231,6 +231,7 @@ Converts a flowing stream to an Observable sequence.
 #### Arguments
 1. `stream` *(Stream)*: A stream to convert to a observable sequence.
 2. `[finishEventName]` *(String)*: Event that notifies about closed stream. ("end" by default)
+3. `[dataEventName]` *(String)*: Event that notifies about incoming data. ("data" by default)
 
 #### Returns
 *(Observable)*: An observable sequence which fires on each 'data' event as well as handling 'error' and finish events like `end` or `finish`.
@@ -252,13 +253,14 @@ var subscription = RxNode.fromStream(process.stdin, 'end')
 
 * * *
 
-### <a id="rxnodefromreadablestreamstream"></a>`RxNode.fromReadableStream(stream)`
+### <a id="rxnodefromreadablestreamstream"></a>`RxNode.fromReadableStream(stream, dataEventName)`
 <a href="#rxnodefromreadablestreamstream">#</a> [&#x24C8;](https://github.com/Reactive-Extensions/RxJS/blob/master/index.js#L131-L133 "View in source")
 
 Converts a flowing readable stream to an Observable sequence.
 
 #### Arguments
 1. `stream` *(Stream)*: A stream to convert to a observable sequence.
+2. `[dataEventName]` *(String)*: Event that notifies about incoming data. ("data" by default)
 
 #### Returns
 *(Observable)*: An observable sequence which fires on each 'data' event as well as handling 'error' and 'end' events.
@@ -272,6 +274,23 @@ var subscription = RxNode.fromReadableStream(process.stdin)
 
 // => r<Buffer 72>
 // => x<Buffer 78>
+```
+
+```js
+var readline = require('readline');
+var fs = require('fs');
+var RxNode = require('rx-node');
+
+var rl = readline.createInterface({
+  input: fs.createReadStream('sample.txt')
+});
+
+var subscription = RxNode.fromReadableStream(rl, 'line')
+    .subscribe(function (x) { console.log(x); });
+
+// Prints contents of 'sample.txt' line by line:
+// => rx
+// => supports 'readline'
 ```
 
 ### Location
