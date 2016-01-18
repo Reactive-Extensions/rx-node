@@ -20,6 +20,7 @@ The Reactive Extensions for JavaScript provides integration points to the core N
 
 - [`fromStream`](#rxnodefromstreamstream-finisheventname)
 - [`fromReadableStream`](#rxnodefromreadablestreamstream)
+- [`fromReadLineStream`](#rxnodefromreadlinestreamstream)
 - [`fromWritableStream`](#rxnodefromwritablestreamstream)
 - [`fromTransformStream`](#rxnodefromtransformstreamstream)
 - [`writeToStream`](#rxnodewritetostreamobservable-stream-encoding)
@@ -276,6 +277,19 @@ var subscription = RxNode.fromReadableStream(process.stdin)
 // => x<Buffer 78>
 ```
 
+* * *
+
+### <a id="rxnodefromreadlinestreamstream"></a>`RxNode.fromReadLineStream(stream)`
+<a href="#rxnodefromreadlinestreamstream">#</a> [&#x24C8;](https://github.com/Reactive-Extensions/RxJS/blob/master/index.js#L100-102 "View in source")
+
+Converts a flowing readable stream to an Observable sequence.
+
+#### Arguments
+1. `stream` *(Stream)*: A stream to convert to a observable sequence.
+
+#### Returns
+*(Observable)*: An observable sequence which fires on each 'line' event as well as handling 'error' and 'close' events.
+
 ```js
 var readline = require('readline');
 var fs = require('fs');
@@ -285,7 +299,7 @@ var rl = readline.createInterface({
   input: fs.createReadStream('sample.txt')
 });
 
-var subscription = RxNode.fromReadableStream(rl, 'line')
+var subscription = RxNode.fromReadLineStream(rl)
     .subscribe(function (x) { console.log(x); });
 
 // Prints contents of 'sample.txt' line by line:

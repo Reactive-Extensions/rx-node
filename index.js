@@ -93,6 +93,15 @@ module.exports = {
   },
 
   /**
+   * Converts a flowing readline stream to an Observable sequence.
+   * @param {Stream} stream A stream to convert to a observable sequence.
+   * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'end' events.
+   */
+  fromReadLineStream: function (stream) {
+    return this.fromStream(stream, 'close', 'line');
+  },
+
+  /**
    * Converts a flowing writeable stream to an Observable sequence.
    * @param {Stream} stream A stream to convert to a observable sequence.
    * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'finish' events.
