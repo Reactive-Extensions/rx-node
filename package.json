@@ -1,22 +1,22 @@
 {
   "name": "rx-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "title": "Reactive Extensions for JavaScript (RxJS) Bindings for Node.js/io.js",
   "description": "RxJS Bindings for Node.js and io.js",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/runner.js --reporter spec"
+    "test": "tape test/**/*.js | tap-spec"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Reactive-Extensions/rx-node.git"
+    "url": "git+https://github.com/Reactive-Extensions/rx-node.git"
   },
   "dependencies": {
     "rx": "*"
   },
   "devDependencies": {
-    "mocha": "^2.0.1",
-    "chai": "~1.10.0"
+    "tape": "^4.4.0",
+    "wrapping-tape": "0.0.3"
   },
   "keywords": [
     "Rx",
@@ -25,17 +25,13 @@
     "Streams",
     "Reactive"
   ],
-  "author": {
-    "name": "Cloud Programmability Team"
-  },
-  "licenses": [
-    {
-      "type": "Apache License, Version 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
-  ],
+  "author": "Microsoft",
   "bugs": {
     "url": "https://github.com/Reactive-Extensions/rx-node/issues"
   },
-  "homepage": "https://github.com/Reactive-Extensions/rx-node"
+  "homepage": "https://github.com/Reactive-Extensions/rx-node",
+  "directories": {
+    "doc": "doc"
+  },
+  "license": "MIT"
 }
