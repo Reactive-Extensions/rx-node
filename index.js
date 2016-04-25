@@ -1,4 +1,4 @@
-var Rx = require('rx');
+var Rx = require('rxjs/Rx');
 
 // Add specific Node functions
 var EventEmitter = require('events').EventEmitter, Observable = Rx.Observable;
@@ -57,15 +57,15 @@ module.exports = {
 
     return Observable.create(function (observer) {
       function dataHandler (data) {
-        observer.onNext(data);
+        observer.next(data);
       }
 
       function errorHandler (err) {
-        observer.onError(err);
+        observer.error(err);
       }
 
       function endHandler () {
-        observer.onCompleted();
+        observer.complete();
       }
 
       stream.addListener(dataEventName, dataHandler);
@@ -79,7 +79,7 @@ module.exports = {
         stream.removeListener('error', errorHandler);
         stream.removeListener(finishEventName, endHandler);
       };
-    }).publish().refCount();
+    }).share(); //publish().refCount();
   },
 
   /**
