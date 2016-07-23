@@ -1,6 +1,6 @@
 {
   "name": "rx-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "title": "Reactive Extensions for JavaScript (RxJS) Bindings for Node.js/io.js",
   "description": "RxJS Bindings for Node.js and io.js",
   "main": "index.js",
