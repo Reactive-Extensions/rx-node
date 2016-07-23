@@ -1,6 +1,6 @@
 {
   "name": "rx-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "title": "Reactive Extensions for JavaScript (RxJS) Bindings for Node.js/io.js",
   "description": "RxJS Bindings for Node.js and io.js",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Reactive-Extensions/rx-node.git"
   },
   "dependencies": {
-    "rx": "*"
+    "rxjs": "^5.0.0-beta.10"
   },
   "devDependencies": {
     "tape": "^4.4.0",
