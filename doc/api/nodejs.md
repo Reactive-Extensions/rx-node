@@ -28,7 +28,7 @@ Converts the given observable sequence to an event emitter with the given event 
 The errors are handled on the 'error' event and completion on the 'end' event.
 
 #### Arguments
-1. `observable` *(Obsesrvable)*: The observable sequence to convert to an EventEmitter.
+1. `observable` *(Observable)*: The observable sequence to convert to an EventEmitter.
 2. `eventName` *(String)*: The event name to subscribe.
 
 #### Returns
